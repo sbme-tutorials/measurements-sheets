@@ -1,0 +1,109 @@
+
+
+\begin{question}
+Given the frequency counts shown: \\
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Symbol & A & C & G \\ 
+\hline 
+Count & 9 & 2 & 17 \\ 
+\hline 
+\end{tabular} \\
+\begin{enumerate}
+\item  What is the word length required for a digital arithmetic encoder to unambiguously encode the above symbols?
+\item Calculate the cumulative count and the total count for the above symbols.
+\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item 6 bits.
+\item \begin{tabular}{|c|c|c|c|}
+\hline 
+Symbol & A & C & G \\ 
+\hline 
+Count & 9 & 11 & 28 \\ 
+\hline 
+\end{tabular} \\
+\end{enumerate}
+\end{solution}
+
+\begin{question}
+Using a word length of 8 bits, encode the symbols “CACG”. Use the table given below to report your results. Give l and u in binary form. Use E to identify the scale operation. Assume the given initial l \& u values, and initial scale3 = 4.
+\end{question}
+\begin{solution}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline 
+Step & Symbol & l & u & E & s3 & Code \\ 
+\hline 
+n-1 & • & 00111111 & 11000001 & - & 4 & - \\ 
+\hline 
+n & C & 01101001 & 01110001 & E1 & 0 & 01111 \\ 
+\hline 
+• & • & 11010010 & 11100011 & E2.E2 & 0 & 11 \\ 
+\hline 
+• & • & 01001000 & 10001111 & E3 & 1 & - \\ 
+\hline 
+• & • & 00010000 & 10011111 & - & 1 & - \\ 
+\hline 
+n+1 & A & 00010000 & 00111101 & E1 & 0 & 01 \\ 
+\hline 
+• & • & 00100000 & 01111011 & E1 & 0 & 0 \\ 
+\hline 
+• & • & 01000000 & 11110111 & - & 0 & - \\ 
+\hline 
+n+2 & C & 01111011 & 10000111 & E3 & 1 & - \\ 
+\hline 
+• & • & 01110110 & 10001111 & E3 & 2 & - \\ 
+\hline 
+• & • & 01101100 & 10011111 & E3 & 3 & - \\ 
+\hline 
+• & • & 01011000 & 10111111 & E3 & 4 & - \\ 
+\hline 
+• & • & 00110000 & 11111111 & - & 4 & - \\ 
+\hline 
+n+3 & G & 10000001 & 11111111 & E2 & 0 & 10000 \\ 
+\hline 
+• & • & 00000010 & 11111111 & - & 0 & 00000000 \\ 
+\hline 
+\end{tabular} 
+\end{solution}
+
+\begin{question}
+Using a word length of 8 bits, decode the first 5 symbols of the stream
+“0111000100000111110010000001111001010101001010010101”. Use the table given below to
+report your results. Give l and u in binary form. Use E to identify the scale operation. Assume the
+given initial l \& u values, and initial scale3 = 4.
+\end{question}
+\begin{solution}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline 
+Step & Symbol & l & u & tag & E & s3 \\ 
+\hline 
+n-1 & • & 00111111 & 11000001 & • & - & 4 \\ 
+\hline 
+n & C & 01101001 & 01110001 & 01110001 & E1 & 0 \\ 
+\hline 
+• & • & 11010010 & 11100011 & 11100010 & E2.E2 & 0 \\ 
+\hline 
+• & • & 01001000 & 10001111 & 10001000 & E3 & 1 \\ 
+\hline 
+• & • & 00010000 & 10011111 & 10010000 & - & 1 \\ 
+\hline 
+n+1 & G & 01001000 & 10011111 & 10010000 & E3 & 2 \\ 
+\hline 
+• & • & 00010000 & 10111111 & 10100000 & - & 2 \\ 
+\hline 
+n+2 & G & 01010101 & 10111111 & 10100000 & E3 & 3 \\ 
+\hline 
+• & • & 00101010 & 11111111 & 11000001 & - & 3 \\ 
+\hline 
+n+3 & G & 01111110 & 11111111 & 11000001 & - & 3 \\ 
+\hline 
+n+4 & G & 10110001 & 11111111 & 11000001 & E2 & 0 \\ 
+\hline 
+• & • & 01100010 & 11111111 & 10000011 & - & 0 \\ 
+\hline 
+n+5 & A & • & • & • & • & 0 \\ 
+\hline 
+\end{tabular} 
+\end{solution}

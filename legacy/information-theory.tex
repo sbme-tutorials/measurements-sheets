@@ -1,0 +1,202 @@
+
+
+\begin{question}
+Suppose that X is a random variable that takes on values from an M-letter alphabet. Show that \\
+$ 0 \leq H(x) \leq \log_2(M) $
+
+\end{question}
+\begin{solution}
+Since entropy maximized when all events are equally probable, i.e $p=\frac{1}{M}$ for all events: \\
+\begin{equation}
+\begin{aligned}
+H_{max}(X) &= - \sum_{i=1}^{M} p_i \log_2( p_i )  \\
+&= - \sum_{i=1}^{M} \frac{1}{M} \log_2( \frac{1}{M} ) \\
+&= - \log_2( \frac{1}{M} ) \\
+&= \log_2( M ) \\
+\therefore 0 \leq H(x) \leq \log_2(M)
+\end{aligned}
+\end{equation}  
+\end{solution}
+
+
+\begin{question}
+An experiment has 2 binary random variable outputs X \& Y, with
+the shown joint probabxilities. Calculate the amount of
+information gained, or expected, from knowing each of the
+following:
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c||c|c}
+\hline
+\bfseries $X$ & \bfseries $Y$ & $P(X,Y)$\\
+\hline\hline	
+0 & 0 & 0.2 \\
+0 & 1 & 0.1 \\
+1 & 0 & 0.1 \\
+1 & 1 & 0.6 \\
+\hline
+\end{tabular}
+\end{table} 
+
+\begin{enumerate}
+\item $Y=1$
+\item The value of X. 
+\item The value of Y, given $X=0$.
+\item The values of both X, Y.
+\item The average common information between X and Y.
+\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+
+\item $H(X|Y=1)=-(\frac{1}{7}
+log_2(\frac{1}{7}) + \frac{6}{7}
+log_2(\frac{6}{7}) = 0.59$
+\item $H(Y|X)=-(0.3log_2(0.3) + 0.7log_2(0.7) = 0.88$. 
+\item  $H(Y|X=0)=-(\frac{1}{3}
+log_2(\frac{1}{3}) + \frac{2}{3}
+log_2(\frac{2}{3}) = 0.918$
+\item 0 (no information if values of X and Y are given).
+\item \begin{equation}
+\begin{aligned}
+H(X) &= -(0.3log_2(0.3) + 0.7log_2(0.7) = 0.88\\
+H(Y) &= -(0.3log_2(0.3) + 0.7log_2(0.7) = 0.88\\
+H_{avrg}(X,Y) &= \frac{H(X)+H(Y)}{2} = 0.88 \text{ bits/source}.
+\end{aligned}
+\end{equation}
+
+\end{enumerate}
+\end{solution}
+
+
+\begin{question}
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c||c|c|c}
+\hline
+\bfseries Symbol & \bfseries a & b & c\\
+\hline\hline	
+Probability & 0.25 & 0.25 & 0.5 \\
+\hline
+\end{tabular}
+\end{table} 
+
+A source emits iid symbols form the alphabet {a, b, \& c}, with the following probabilities. Calculate the entropy of that source. 
+\end{question}
+\begin{solution}
+$H(X)= -( 0.5\log_2(0.5) + 0.25\log_2(0.25) + 0.25\log_2(0.25) = 1.5 \text{bits (0.1875 bytes)}$
+\end{solution}
+
+\begin{question}
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c|c|c|c}
+\hline
+ $P(X_{n-1}) /P(X_{n}) $ & a  & b  & c \\
+a & 0.5 & 0.125 & 0.375 \\
+b & 0.125 & 0.5 & 0.375\\
+c & 0.125 & 0.125 & 0.75 \\
+\hline
+\end{tabular}
+\end{table}
+
+The probability of the current symbol, $X_n$, emitted from the previous source, is found to be related to the previous symbol, $X_{n-1}$, as shown in table. Recalculate the entropy of the source.
+
+\end{question}
+\begin{solution}
+\begin{itemize}
+\item $P(a) = 0.25$
+\item $P(b) = 0.25$
+\item $P(c) = 0.5$
+\end{itemize}
+
+
+\begin{equation}
+\begin{aligned}
+H_1(a) &= -( P(a|a)\log(P(a|a)) + P(b|a)\log(P(b|a)) + P(c|a)\log(P(c|a))\\
+&= - (  0.5\log(0.5) + 0.125\log(0.125) + 0.375\log(0.375)) \\
+&= \text{1.4 bits}  \\
+H_1(b) &= ( P(a|b)\log(P(a|b)) + P(b|b)\log(P(b|b)) + P(c|b)\log(P(c|b))\\
+&= - (  0.125\log(0.125) + 0.5\log(0.5) + 0.375\log(0.375)) \\
+&= \text{1.4 bits} \\
+H_1(c) &= ( P(a|c)\log(P(a|c)) + P(b|c)\log(P(b|c)) + P(c|c)\log(P(c|c))\\
+&= - (  0.125\log(0.125) + 0.125\log(0.125) + 0.75\log(0.75)) \\
+&= \text{1.06 bits} \\
+\therefore H(X_n|X_{n-1}) &= P(a)H(a) + P(b)H(b) + P(c)H(c) \\
+&= \text{1.23 bits (0.15375 bytes)}
+\end{aligned}
+\end{equation}
+
+\end{solution}
+
+
+\begin{question}
+\begin{itemize}
+\item $P(A) = 0.125$
+\item $P(C) = 0.125$
+\item $P(G) = 0.25$
+\item $P(T) = 0.5$
+\end{itemize}
+The bases of a genomic sequence have the probabilities shown. Calculate the self-information of “C”, and the entropy of the sequence. 
+\end{question}
+\begin{solution}
+$i(C) = -log(P(C)) = \text{3 bits}$ \\
+
+\begin{equation}
+\begin{aligned}
+H(S) &= -( P(A)\log(P(A)) + P(G)\log(P(G)) + P(C)\log(P(C)) + P(T)\log(P(T)) \\ 
+&= \text{1.75 bits}
+\end{aligned}
+\end{equation}
+\end{solution}
+
+\begin{question}
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c||c|c|c|c}
+\hline
+ $B_{n-1} \text{\textbackslash} B_{n} $ & A  & C  & G & T \\
+ \hline\hline
+A & 0.4 & 0.2 & 0.1 & 0.3 \\
+C & 0.2 & 0.4 & 0.2 & 0.2 \\
+G & 0.1 & 0.1 & 0.3 & 0.5 \\
+T & 0.05&0.05 &0.275&0.625 \\
+\hline
+\end{tabular}
+\end{table}
+
+The probability of the any base, $B_n$, in the previous sequence, is found to be related to its previous base, $B_{n-1}$, by the probabilities given in the following table. Recalculate the entropy of the sequence.
+Note: $P(A) = 0.125$, $P(C) = 0.125$, $P(G) = 0.25$, and $P(T) = 0.5$.
+
+\end{question}
+\begin{solution}
+\begin{equation}
+\begin{aligned}
+H_1(A) &= - P(A|A)\log(P(A|A)) - P(C|A)\log(P(C|A)) \\
+&- P(G|A)\log(P(G|A)) - P(T|A)\log(P(T|A)) \\
+&=  -0.4\log(0.4)  -0.2\log(0.2) -0.1\log(0.1) -0.3\log(0.3)) \\
+&= \text{1.846 bits}  \\
+H_1(C) &= -( P(A|C)\log(P(A|C)) - P(C|C)\log(P(C|C)) \\
+&- P(G|C)\log(P(G|C) - P(T|C)\log(P(T|C)) \\
+&= - (  0.2\log(0.2) - 0.4\log(0.4) - 0.2\log(0.2)- 0.2\log(0.2)) \\
+&= \text{1.922 bits}  \\
+H_1(G) &= -P(A|G)\log(P(A|G)) - P(C|G)\log(P(C|G)) \\ 
+&- P(G|G)\log(P(G|G) - P(T|G)\log(P(T|G)) \\
+&= -0.1\log(0.1) - 0.1\log(0.1) - 0.3\log(0.3)- 0.5\log(0.5)) \\
+&= \text{1.685 bits}  \\
+H_1(T) &= -P(A|T)\log(P(A|T)) - P(C|T)\log(P(C|T)) \\
+&- P(G|T)\log(P(G|T) - P(T|T)\log(P(T|T)) \\
+&= -0.05\log(0.05) - 0.05\log(0.05) - 0.275\log(0.275)- 0.625\log(0.625) \\
+&= \text{1.368 bits}  \\
+\therefore H(X_n|X_{n-1}) &= P(A)H(A) + P(C)H(C) + P(G)H(G) + P(T)H(T) \\
+&= \text{1.57625 bits (0.197 bytes)}
+\end{aligned}
+\end{equation}
+
+\end{solution}
+

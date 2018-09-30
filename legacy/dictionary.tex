@@ -1,0 +1,318 @@
+
+\begin{question}
+
+Given the sequence \{101011010010001001101010100101111111000000\}, use (LZ78/W/Y) to
+encode/decode the first 7 phrases. Show the generated phrases, the corresponding code, and the encoder tree after each coding/decoding cycle. Use suppression, excision and prefix coding.
+
+\end{question}
+\begin{solution}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+• & LZ78 SEP & LZW EP & LZY SEP \\ 
+\hline 
+Phrase 1 & 1 & 1 & 1 \\ 
+\hline 
+Code 1 & 1 & 1 & 1 \\ 
+\hline 
+Phrase 2 & 0 & 0 & 0 \\ 
+\hline 
+Code 2 & 0 & 0 & 0 \\ 
+\hline 
+Phrase 3 & 10 & 10 & 10 \\ 
+\hline 
+Code 3 & 00 & 10 & 10 \\ 
+\hline 
+Phrase 4 & 11 & 1 & 01 \\ 
+\hline 
+Code 4 & 0 & 01 & 110 \\ 
+\hline 
+Phrase 5 & 01 & 101 & 1 \\ 
+\hline 
+Code 5 & 01 & 110 & 01 \\ 
+\hline 
+Phrase 6 & 00 & 0 & 101 \\ 
+\hline 
+Code 6 & 00 & 00 & 101 \\ 
+\hline 
+Phrase 7 & 100 & 01 & 01 \\ 
+\hline 
+Code 7 & 000 & 01 & 011 \\ 
+\hline 
+\end{tabular} 
+
+\begin{enumerate}
+\item LZ87 SEP Encoder \& Decoder
+\begin{itemize}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+	;
+\end{tikzpicture} 
+
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { }
+	    child { node{1}}	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{2}}
+	    child { node{1}}	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{2}}
+	    child { node{1}
+	        child { node{3}}	}	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{2}}
+	    child { node{1}
+	        child { node{3}}
+	        child { node{4}} }	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{2}
+		    child {} 
+		    child { node{5}}    }
+	    child { node{1}
+	        child { node{3}}
+	        child { node{4}}	}	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{2}
+		    child { node{6}} 
+		    child { node{5}}    }
+	    child { node{1}
+	        child { node{3}}
+	        child { node{4}}	}	
+	;
+\end{tikzpicture}
+
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{2}
+		    child { node{6}} 
+		    child { node{5}}    }
+	    child { node{1}
+	        child { node{3} 
+	                    child{ node{7}} }
+	        child { node{4}}	}	
+	;
+\end{tikzpicture}
+\end{itemize}
+
+
+
+\item LZW EP Tree
+\begin{itemize}
+\item  \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} }
+	    child { node{1}	}	
+	;
+\end{tikzpicture}
+\item  \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} }
+	    child { node{1} 
+	            child{ node{2}	} }	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3}} } 
+	    child { node{1} 
+	            child{ node{2}} }	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3}} }
+	    child { node{1} 
+	            child{ node{2}	
+	                    child{}
+	                    child{ node {4} }} }	
+	;
+\end{tikzpicture}
+
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3}} } 
+	    child { node{1} 
+	            child{ node{2}
+	                    child{}
+	                    child{ node {4} }	} 
+	            child{ node{5} } }	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3}} } 
+	    child { node{1} 
+	            child{ node{2}
+	                    child{}
+	                    child{ node {4} 
+	                            child{  node{6} } }	} 
+	            child{ node{5} } }	
+	;
+\end{tikzpicture}
+
+\item  \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{ node{7}} 
+		        child{ node{3}} } 
+	    child { node{1} 
+	            child{ node{2}
+	                    child{}
+	                    child{ node {4} 
+	                            child{  node{6} } }	} 
+	            child{ node{5} } }	
+	;
+\end{tikzpicture}
+
+\end{itemize}
+
+
+\item LZY SEP 
+\begin{itemize}
+\item  \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} }
+	    child { node{1}	}	
+	;
+\end{tikzpicture}
+\item  \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} }
+	    child { node{1} 
+	            child{ node{2}	} }	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3}} } 
+	    child { node{1} 
+	            child{ node{2}} }	
+	;
+\end{tikzpicture}
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3}} }
+	    child { node{1} 
+	            child{ node{2}	
+	                    child{}
+	                    child{ node {4} }} }	
+	;
+\end{tikzpicture}
+
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3} 
+		                child{ node{}}
+		                child{ node{5}} } }
+	    child { node{1} 
+	            child{ node{2}	
+	                    child{}
+	                    child{ node {4} }} }	
+	;
+\end{tikzpicture}
+
+\item \begin{tikzpicture}[level 1/.style={sibling distance=4cm},level 2/.style={sibling distance=2.5cm},level 3/.style={sibling distance=2cm}]
+	\node {R}
+		child { node{0} 
+		        child{} 
+		        child{ node{3} 
+		                child{ node{}}
+		                child{ node{5}} } }
+	    child { node{1} 
+	            child{ node{2}	
+	                    child{}
+	                    child{ node {4} 
+	                            child{ node{7}} }} }	
+	;
+\end{tikzpicture}
+
+\end{itemize}
+\end{enumerate}
+\end{solution}
+
+\begin{question}
+Using LZ77 (Tail biting, Future), encode, in binary, the first four phrases following the underlined
+window. Indicate the meaning of each part of the code, e.g. new character, Length, ...etc.
+\underline{011001001111010001001111110110011101110} \\
+1000100111111001100111011101001110001001111000111000001111
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item First Phrase: 100010011111100 \\ 
+Current Win=011001001111010001001111110110011101110 \\
+Code= 00110101110\\
+New Win=011001001111010001001111110\\110011101110100010011111100 \\
+Stream=110001001111000111000001111
+
+\item Second Phrase: 1100111011101001 \\
+Current Win=011001001111010001001111110110011101110100010011111100 \\
+Code= 01101101110\\
+New Win=0110010011110100010011111101100\\111011101000100111111001100111011101001 \\
+Stream=110001001111000111000001111
+
+\item Third Phrase: 11000 \\
+Current Win=01100100111101000100111111011001\\11011101000100111111001100111011101001 \\
+Code= 0110110 0011\\
+New Win=0110010011110100010011111101100111\\01110100010011111100110011101110100111000 \\
+Stream=1001111000111000001111
+
+\item Fourth Phrase=100111100 \\
+Current Win=011001001111010001001111110110011\\101110100010011111100110011101110100111000 \\
+Code= 00001010000111\\
+New Win=011001001111010001001111110110011101110\\100010011111100110011101110100111000100111100 
+ 
+\end{enumerate}
+\end{solution}
+
+\begin{question}
+Code the first 6 phrases of the sequence {101101101110010010111111001...}. Use LZ77. Show the generated phrases, the corresponding code, and the search window after each coding cycle.
+\end{question}
+\begin{solution}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+i & Phrase & Code & Window \\ 
+\hline 
+1 & 1 & 1 & 1 \\ 
+\hline 
+2 & 0 & 10 & 10 \\ 
+\hline 
+3 & 11 & 001 & 1011 \\ 
+\hline 
+4 & 0110 & 01110 & 10110110 \\ 
+\hline 
+5 & 111 & 101101 & 10110110111 \\ 
+\hline 
+6 & 00 & 1011000 & 1011011011100 \\ 
+\hline 
+\end{tabular} 
+\end{solution}
+

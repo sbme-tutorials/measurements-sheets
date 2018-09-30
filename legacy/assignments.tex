@@ -1,0 +1,141 @@
+\documentclass[a4paper,11pt]{book}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{graphicx}
+\usepackage{exsheets}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{filecontents}
+\usepackage{multirow}
+\usepackage{tikz}
+%\usepackage{showframe}% to show frames
+
+\graphicspath{{images/}} 
+
+\def\BState{\State\hskip-\ALG@thistlm}
+
+
+\definecolor{TitleColor}{rgb}{0.65,0.04,0.07}
+\definecolor{NumberColor}{rgb}{0.02,0.04,0.48}
+
+\DeclareInstance{exsheets-heading}{fancy}{default}{
+toc-reversed = true ,
+indent-first = true ,
+vscale = 2 ,
+pre-code = \IfInsideQuestionT{\rule{\linewidth}{1pt}} ,
+post-code =\IfInsideQuestionT{\rule{\linewidth}{1pt}} ,
+subtitle-format = \large\scshape\color{rgb:red,0.65;green,0.04;blue,0.07} ,
+number-format = \large\bfseries\color{rgb:red,0.02;green,0.04;blue,0.48} ,
+points-format = \itshape ,
+join = { number[r,B]title[l,B](.333em,0pt);
+title[r,B]subtitle[l,B](1em,0pt)
+} ,
+attach =
+{
+main[hc,vc]number[hc,vc](0pt,0pt) ;
+main[l,vc]subtitle[hc,vc](\marginparsep,0pt)
+}
+}
+
+
+
+\DeclareInstance{exsheets-heading}{block-subtitle}{default}{
+vscale = 2 ,
+pre-code = \rule{\linewidth}{1pt} ,
+post-code = \rule{\linewidth}{1pt} ,%title-format = \large\scshape\color{TitleColor} ,
+number-format = \large\bfseries\color{rgb:red,0.02;green,0.04;blue,0.48} ,
+subtitle-format = \large\scshape\color{black} ,
+join = {
+title[r,B]number[l,B](.333em,0pt) ;
+title[r,B]subtitle[l,B](1em,0pt)
+} ,
+attach = {
+main[l,vc]title[l,vc](0pt,0pt) ;
+main[r,vc]points[l,vc](\marginparsep,0pt)
+},
+}
+
+\DeclareQuestionClass{textbook}{textbooks}
+
+\SetupExSheets{
+  headings = fancy,
+  question/print = true ,
+  solution/print = true }
+ % counter-format = se.qu ,
+%  counter-within = section ,
+  %question/pre-hook = \rule{\textwidth}{1pt},
+
+
+\hypersetup{
+	colorlinks = true, 
+	breaklinks = true, 
+	bookmarks = true,
+	bookmarksnumbered = true,
+	urlcolor = blue, 
+	linkcolor = blue, 
+	citecolor=blue,
+	linktoc=page, 
+	pdftitle={}, 
+	pdfauthor={\textcopyright Author}, 
+	pdfsubject={}, 
+	pdfkeywords={}, 
+	pdfcreator={pdfLaTeX}, % PDF Creator
+	pdfproducer={IEEE} }
+
+
+\usetikzlibrary{arrows}
+
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+  arn_n/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+  arn_r/.style = {treenode, circle, red, draw=red, 
+    text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+  arn_x/.style = {treenode, rectangle, draw=black,
+    minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
+}
+
+
+
+\makeatletter
+\@addtoreset{question}{section}
+\makeatother
+
+
+\begin{document}
+\author{Asem Alaa}
+
+\title{Data Compression [SBE628] (Fall 2017):\\ Assignment}
+
+\maketitle
+
+\chapter*{Information Theory}
+\input{information-theory}
+
+
+\chapter*{Decodability}
+\input{decodability}
+
+
+\chapter*{Huffman Coding}
+\input{huffman}
+
+\chapter*{Arithmetic Coding}
+\input{arithmetic}
+
+\chapter*{Dictionary Methods}
+\input{dictionary}
+
+\chapter*{Predictive}
+\input{predictive}
+
+\end{document}
+
+

@@ -1,0 +1,134 @@
+
+\begin{question}
+Determine whether each of the following codes is uniquely decodable (UD), prefix, instantaneous, or near instantaneous:
+\begin{enumerate}
+\item \{0,01,11,111\}
+\item \{0,01,110,111\}
+\item \{0,10,110,111\}
+\item \{1,10,110,111\}
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c|c|c|c|c}
+\hline
+ Code & UD  & Prefix  & Intantaneous & Near-instantaneous \\
+\{0,01,11,111\} & F & F & F & T \\
+\{0,01,110,111\} & F & F & F & T \\
+\{0,10,110,111\} & F & F & F & F \\
+\{1,10,110,111\} & F & F & F & F \\
+\hline
+\end{tabular}
+\end{table}
+\end{solution}
+
+\begin{question}
+An alphabet of 7 symbols, had code lengths of 2, 2, 3, 3, 3, 3, \& 3 bits. Is this code uniquely decodable? Why?
+\end{question}
+\begin{solution}
+No. \\
+Reasons: \\
+$K = - \sum_{i=1}^{l} 2^{-l} = 2 \times 2^{-2} + 5 \times 2^{-3} = 1.125$ \\
+$ \therefore \text{ not UD } (K>1).$ \\
+
+\end{solution}
+
+
+\begin{question}
+What the largest number is of symbols that can be coded using a ternary (i.e. 3 symbols) code, while the code length of each symbol does not exceed 3? Why?
+\end{question}
+\begin{solution}
+The largest number is 27.\\
+Reasons: using a 3 symbols for each code results in $3^3$ variants. 
+\end{solution}
+
+
+
+\begin{question}
+14 symbols are coded using a ternary (i.e. 3) code. The code lengths are 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, \& 3. Is this code uniquely decodable? Why?
+\end{question}
+\begin{solution}
+Uniquely decodable. \\
+Reasons: \\
+$K = - \sum_{i=1}^{l} 3^{-l} = 6 \times 3^{-2} + 8 \times 3^{-3} = 0.963$ \\
+$\therefore \text{ is decodable } (K<1)$.
+\end{solution}
+
+
+\begin{question}
+An alphabet of 7 symbols, had code lengths of 2, 2, 3, 3, 3, 3, \& 3 bits. Is this code uniquely decodable? Why?
+\end{question}
+\begin{solution}
+Not UD. \\
+Reasons: \\
+$K = - \sum_{i=1}^{l} 2^{-l} = 2 \times 2^{-2} + 5 \times 2^{-3} = 1.125$ \\
+$ \therefore \text{ not UD } (K>1).$ \\
+
+\end{solution}
+
+
+\begin{question}
+Using Kraft’s Inequality, check the decidability of the
+following code table. Next, check the code table. Is the
+code decodable? Why? Calculate the entropy, the average
+code length, and the redundancy
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c|c|c}
+\hline
+Symbol & Probability & Code \\
+a & 0.125 & 0 \\
+b & 0.125 & 10 \\
+c & 0.25 & 110 \\
+d & 0.5 & 101 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{question}
+\begin{solution}
+Kraft’s inequality result: \\
+$K = - \sum_{i=1}^{l} 2^{-l} = 2 \times 2^{-3} + 2^{-2} + 2^{-1} = 1$ \\
+Decodability based on Kraft’s inequality: UD ($K\leq1$).\\
+Is the code decodable? \\ 
+No. \\
+Why? \\
+Dangling Suffixes = \{1,10,0\} which includes codes \{10,0\} from the original codes.\\
+Average Code Length = 2.625 bits/symbol. \\
+Redundancy = 0.875 bits/symbol.
+\end{solution}
+
+
+\begin{question}
+Assume a 5-symbol alphabet \{A, B, C, D, E\}. Build a prefix code for the symbols. Then code the sequence: CBABAA.
+\end{question}
+\begin{solution}
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c|c|c|c|c|c}
+\hline
+Symbol & A & B & C & D & E \\
+Code & 0 & 10 & 110 & 1110 & 1111 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c|c|c|c|c|c|c}
+\hline
+Symbol & C & B & A & B & A & A \\
+Code & 110 & 10 & 0 & 10 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{solution}
+
