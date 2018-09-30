@@ -1,0 +1,82 @@
+\section*{Rationale}
+
+\begin{itemize}
+
+\item The number of significant figures \textit{is the number of digits between and including the least
+and \emph{the most significant digits}}. 
+\item The leftmost nonzero digit is called \emph{the most significant digit}; the rightmost nonzero digit, \emph{the least significant digit}.
+\item If there is a decimal point in the number, then the rightmost digit is \emph{the least significant digit} even if it is a zero. 
+\item These rules imply that the following
+numbers have five significant figures:
+\begin{itemize}
+\item 1.0000
+\item 2734.2
+\item 53 267.
+\item 428 970
+\item 10 101
+\item 0.008 976 0
+\end{itemize} 
+
+\end{itemize}
+
+\subsection*{Round-off}
+
+\begin{enumerate}
+\item To round off a number, the number first is truncated to its desired length. Then the excess digits are expressed as a decimal fraction.
+\item If it is greater than 1/2, we round up the least significant digit by one; if it is
+less than 1/2, it is left alone. If the fraction equals 1/2, the least significant
+digit is rounded up by one only if that digit is odd (Patrick F. Dunn).
+\item Do not round-off intermediate results. Only the final results to be rounded-off.
+\item The number of significant figures in a computed result equals the minimum number of significant figures in any number used in the computation.
+\end{enumerate}
+
+
+\subsection*{Scientific Notation}
+
+\begin{itemize}
+\item What happens when no decimal point is present, a zero is the rightmost digit and it is significant? This situation is ambiguous and can be avoided by expressing the number in scientific notation, where $428 970$ becomes $4.289 70 \times 10^5$ .
+\item All of the digits present in scientific notation are significant. 
+\end{itemize}
+
+\begin{question}
+Round off the following numbers to three significant figures: $23 421$,
+$16.024$, $273.61$, $5.6850 \times 10^3$ , and $5.6750 \times 10^3$ .
+\examspace{5em}
+
+\end{question}
+\begin{solution}
+The answers are $23 400$, $16.0$, $274$, $5.68 \times 10^3$ , and $5.68 \times 10^3$ . Note that
+$16.024$ when rounded off to three significant figures is $16.0$, where the 0 is significant
+because it is to the right of the decimal point. Also note that the last two numbers
+when rounded off to three significant figures become the same. This is because of our
+rule for round-off when the truncated fraction equals 1/2.
+
+\end{solution}
+
+
+\begin{question}
+How many significant figures does the number 001 001.0110 have?
+\examspace{5em}
+
+\end{question}
+\begin{solution}
+8. The left-most 2 zeros are not significant. However, the right-most zero is
+significant because of the presence of a decimal point.
+
+\end{solution}
+
+
+\begin{question}
+Determine in the appropriate SI units the value with the correct number
+of significant figures of the work done by a $1.460 \times 10^6$ lbf force over a $2.3476$ m
+\examspace{5em}
+
+\end{question}
+\begin{solution}
+There are four significant figures for the force and five for the distance.
+Because work is the product of force and distance (assuming that the force is applied
+along the direction of motion), work will have four significant figures. The SI unit of
+work is the joule, where $J = N \cdot m$. Now $1.460 \times 10^6$ lbf equals $6.495 \times 10^6 N$. So, the
+work is $1.525 \times 10^6 J$ or $1.525 MJ$.
+
+\end{solution}
