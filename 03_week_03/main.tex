@@ -78,7 +78,42 @@ a_n \frac{d^{n}q_o}{dt^{n}} + a_{n-1} \frac{d^{n-1}q_o}{dt^{n-1}} + \cdots + a_1
 
 \subsection*{Zero-order instrument}
 
+If all the coefficients $a_1 \cdots a_n$ other than $a_0$ in Equation \ref{eqn:dynamic-reduced} are assumed zero, then: 
+
+\begin{equation}\label{eqn:zero-order}
+a_0 q_o = b_0 q_i ~~\text{or}~~ q_o = b_0 \frac{q_i}{a_0} = K q_i 
+\end{equation}
+
+where $K$~ is a constant known as the instrument sensitivity as defined earlier. Figure \ref{fig:zero-order} shows an instrument of zero-order response.
+
+\begin{figure*}[h!]\label{fig:zero-order}
+\centering
+  \includegraphics[width=0.7\linewidth]{zero-order}
+  \caption{Zero-order instrument characteristic.} 
+\end{figure*}
+
+
 \subsection*{First-order instrument}
+
+If all the coefficients $a_2 \cdots a_n$ except for $a_0$ and $a_1$ in Equation \ref{eqn:dynamic-reduced} are assumed zero, then: 
+
+\begin{equation}\label{eqn:first-order}
+a_1 \frac{dq_o}{dt} + a_0 q_o = b_0 q_i  
+\end{equation}
+
+Taking the Laplace transform of \ref{eqn:first-order} as a method to solving the differential equation:
+
+\begin{align}
+( a_1 s + a_0 ) Q_o(s) &= b_0 Q_i(s)  \\
+Q_o(s) &= \frac{ b_0 Q_i(s) }{ a_1 s + a_0 } \\
+Q_o(s) &= \frac{ K Q_i(s) }{ s + \frac{1}{\uptau}} \label{eqn:first-order-laplace}
+\end{align}
+
+\begin{figure*}[h!]\label{fig:first-order}
+\centering
+  \includegraphics[width=0.7\linewidth]{first-order}
+  \caption{First-order instrument characteristic.} 
+\end{figure*}
 
 \subsection*{Second-order instrument}
 
@@ -125,28 +160,5 @@ and state which of these is the usual target when a second order instrument is b
 
 
 \end{solution}
-
-
-\begin{figure*}[h!]\label{fig:comparison}
-   
-  \subfloat[]{
-       \includegraphics[width=0.40\linewidth]{zdrift}
-       }
-    \label{fig:zdrift}\hfill
-  \subfloat[]{
-        \includegraphics[width=0.40\linewidth]{sdrift}
-        }
-    \label{fig:sdrift}\\
-  \subfloat[]{
-       \includegraphics[width=0.40\linewidth]{zsdrift}
-        }
-   \label{fig:zsdrift}\hfill
-  \caption{ Comparison between (a) zero-dirft (b) sensitivity-drift (c) zero- and sensitivity-drift.} 
-\end{figure*}
-
-\begin{figure*}[h!]\label{fig:comparison}
-  \includegraphics[width=0.40\linewidth]{acc_precision}
-  \caption{ Comparison between accuracy and precision.} 
-\end{figure*}
 
 \end{document}
