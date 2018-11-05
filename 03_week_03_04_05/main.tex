@@ -20,7 +20,7 @@
 \begin{document}
 \author{Dr. Muhammed Rushdi \and Asem Alaa}
 
-\title{Measurements and Instrumentation [SBE206A] (Fall 2018)\\ Tutorial 3}
+\title{Measurements and Instrumentation [SBE206A] (Fall 2018)\\ Tutorial 3, 4, \& 5}
 
 \maketitle
 
@@ -135,7 +135,7 @@ a_2 \left[ s^2 Q_o(s) - s q_o(0) - q_o'(0) \right] + a_1 \left[ sQ_o(s) - q_o(0)
 \begin{align} 
 (a_2 s^2 + a_1 s + a_0 ) Q_o(s) &= b_0 Q_i(s) + a_2sq_o(0) + a_2 q_o'(0) + a_1 q_o(0) \\
 Q_o(s) &= \frac{ b_0 Q_i(s) + a_2sq_o(0) + a_2 q_o'(0) + a_1 q_o(0) }{ a_2 s^2 + a_1 s + a_0 } \\
-Q_o(s) &= \frac{ K w_n^2 Q_i(s) + q_o(0)s + q_o'(0) + 2 \eta w_n q_o(0) }{ s^2 + 2 \eta w_n s + {w_n}^2} \label{eqn:second-order-laplace}
+Q_o(s) &= \frac{ K \omega_n^2 Q_i(s) + q_o(0)s + q_o'(0) + 2 \eta \omega_n q_o(0) }{ s^2 + 2 \eta \omega_n s + {\omega_n}^2} \label{eqn:second-order-laplace}
 \end{align}
 
 Where: \begin{itemize}
@@ -147,12 +147,12 @@ Where: \begin{itemize}
 \subsection*{Zero initial condition}
 To develop intuition about the solution of $q_o(t)$, let's assume that the system is driven by an input of constant quantity (i.e $q_i(t)=const.$ \& $Q_i(s)=\frac{const.}{s}$), and $q_o(t)$ has zero initial value. The system is then described by the following equation:
 \begin{equation}\label{eqn:zi-second-order}
-Q_o(s) = \frac{ C }{ s(s^2 + 2 \eta \omega_n s + {\omega_n}^2)}
+Q_o(s) = \frac{ M(s) }{ s(s^2 + 2 \eta \omega_n s + {\omega_n}^2)}
 \end{equation}
 
-where $C$ is constant.
+where $M(s)$ is a polynomial in $s$.
 
-The solution of $q_o(t)$ is subject to computing the roots of the denumerator part $s(s^2 + 2 \eta w_n s + {w_n}^2)$, where the roots of  $N(s)=(s^2 + 2 \eta w_n s + {w_n}^2)$ is computed as:
+The solution of $q_o(t)$ is subject to computing the roots of the denumerator part $s(s^2 + 2 \eta \omega_n s + {\omega_n}^2)$, where the roots of  $N(s)=(s^2 + 2 \eta \omega_n s + {\omega_n}^2)$ is computed as:
 \begin{align}
 s_{1,2} &= \frac{-2\eta \omega_n \pm \sqrt{4\eta^2 \omega_n^2 - 4 \omega_n^2}}{2} \\
  &= -\eta \omega_n \pm \omega_n \sqrt{\eta^2 - 1}
@@ -177,11 +177,11 @@ Figure \ref{fig:second-order} shows a system of second-order reponse with differ
 
 The Equation \ref{eqn:zi-second-order} can be factorized as following:
 \begin{align*}
-Q_o(s)|_{\eta>1} &= \frac{const.}{s(s + (\alpha + \beta))(s + (\alpha - \beta)} \\
+Q_o(s)|_{\eta>1} &= \frac{M(s)}{s(s + (\alpha + \beta))(s + (\alpha - \beta)} \\
 &= \frac{A}{s} + \frac{B}{s + (\alpha + \beta)} + \frac{C}{s + (\alpha - \beta)}
 \end{align*}
 
-where $\beta = w_n\sqrt{\eta^2 - 1}$.
+where $\beta = \omega_n\sqrt{\eta^2 - 1}$.
 
 and the general solution of $q_o(t)|_{\eta>1}$ becomes:
 
@@ -193,7 +193,7 @@ q_o(t)|_{\eta>1} = A + Be^{-(\alpha+\beta)t}+Ce^{-(\alpha-\beta)t}
 
 The Equation \ref{eqn:zi-second-order} can be factorized as following:
 \begin{align*}
-Q_o(s)|_{\eta=1} &= \frac{const.}{s(s +\alpha)^2} \\
+Q_o(s)|_{\eta=1} &= \frac{M(s)}{s(s +\alpha)^2} \\
 &= \frac{A}{s} + \frac{B}{s + \alpha} + \frac{C}{(s + \alpha)^2}
 \end{align*}
 
@@ -332,7 +332,7 @@ thermocouple can have and still meet the desired response characteristics.
 \end{figure*}
 An instrument is modeled as a parallel RLC circuit whose differential equation is 
 \begin{equation*}
-\frac{d^2 v(t)}{dt^2} + \frac{1}{RC}\frac{dv(t)}{dt^2} + \frac{1}{LC}v(t) = 0
+\frac{d^2 v(t)}{dt^2} + \frac{1}{RC}\frac{dv(t)}{dt} + \frac{1}{LC}v(t) = 0
 \end{equation*}
 
 where $v(t)$ is the capacitor voltage.
