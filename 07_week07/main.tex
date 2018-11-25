@@ -1,0 +1,145 @@
+\documentclass[a4paper,11pt]{book}
+\renewcommand{\familydefault}{\sfdefault}
+
+\input{../partials/includes}
+\input{../partials/setup}
+\input{../partials/styles}
+
+
+
+\graphicspath{{images/}} 
+
+
+
+
+\makeatletter
+\@addtoreset{question}{section}
+\makeatother
+
+
+\begin{document}
+\author{Dr. Muhammed Rushdi \and Asem Alaa}
+
+\title{Measurements and Instrumentation [SBE206A] (Fall 2018)\\ Tutorial 7}
+
+\maketitle
+
+
+\chapter*{Errors during the measurement process}
+
+\section*{Introduction}
+\begin{itemize}
+\item Measurement errors are impossible to avoid.
+\item we can minimize their magnitude by: 
+\begin{itemize}
+\item good measurement system design.
+\item appropriate analysis and processing of measurement data.
+\end{itemize} 
+\item Errors are categorized to:
+\begin{itemize}
+\item Systematic errors
+\item Random errors
+\end{itemize}
+\end{itemize}
+
+\section*{Systematic errors}
+
+The systematic errors affect the readings in a consistent way, such that all readings are on one side of the true value (either all positive or all negative).\\
+\\
+Sources of systematic errors are:
+\begin{enumerate}
+\item System disturbances due to measurement.
+\item Environmental changes (results in change of sensitivity drift or zero drift).
+\item Use of uncalibrated instruments.
+\item Wear in instruments components (can be compensated by calibration).
+\item Poor cabling practices.
+\end{enumerate}
+
+
+
+
+
+
+\section*{Random errors}
+
+In contrast, random errors have stochastic effects on readings; the readings are distributed around a the true value.  \\ \\  
+Possible sources of random errors are:
+\begin{enumerate}
+\item Human reading errors.
+\item Electrical noise.
+\end{enumerate}
+
+\section*{Comparison between systematic and random errors}
+\begin{figure*}[h!]\label{fig:uncertinity}
+\centering
+  \includegraphics[width=0.8\linewidth]{uncertinity}
+  \caption{Difference between systematic errors effect and random errors effect.} 
+\end{figure*}
+
+\begin{table}
+\begin{tabular}{|c|c|}
+\hline 
+Systematic Error & Random Error \\ 
+\hline 
+Poor accuracy & poor precision \\ 
+\hline 
+definite causes & indefinite causes \\ 
+\hline 
+reproducible & not reproducible \\ 
+\hline 
+\end{tabular} 
+\caption{Comparison between systematic and random errors}
+\end{table}
+
+\begin{question}
+Which is more challenging? Systematic errors or random errors?
+\end{question}
+\begin{solution}
+
+
+\end{solution}
+
+
+\section*{Aggregation of measurement system errors}
+
+\chapter*{Problems}
+
+\section*{Systematic Errors}
+\subsection*{Systematic erros due to disturbance}
+\begin{question}[subtitle=System Disturbance]
+\begin{figure*}[h!]\label{fig:systematic_error_circuit}
+\centering
+  \includegraphics[width=0.8\linewidth]{systematic_error_circuit}
+  \caption{Effect of applying the voltmeter to the measured quantity.} 
+\end{figure*}
+\begin{enumerate}
+\item Derive the relation of the true and output readings.
+\item Suppose that the components of the circuit in Figure \ref{fig:systematic_error_circuit} have the following values:
+ R\textsubscript{1} = $400\Omega$, R\textsubscript{2} = $600\Omega$, R\textsubscript{3} = $1000\Omega$, R\textsubscript{4} = $500\Omega$, R\textsubscript{5} = $1000\Omega$
+\end{enumerate}
+\examspace*{10em}
+
+\end{question}
+\begin{solution}
+
+
+\end{solution}
+
+
+\begin{question}
+
+
+\examspace*{10em}
+
+\end{question}
+\begin{solution}
+
+
+\end{solution}
+
+
+
+
+
+
+\end{document}
