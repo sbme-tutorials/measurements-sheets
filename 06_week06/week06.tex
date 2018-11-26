@@ -1,0 +1,157 @@
+\documentclass[a4paper,11pt]{book}
+\renewcommand{\familydefault}{\sfdefault}
+
+\input{../partials/includes}
+\input{../partials/setup}
+\input{../partials/styles}
+
+
+
+\graphicspath{{images/}} 
+
+
+
+
+\makeatletter
+\@addtoreset{question}{section}
+\makeatother
+
+
+\begin{document}
+\author{Dr. Muhammed Rushdi \and Asem Alaa}
+
+\title{Measurements and Instrumentation [SBE206A] (Fall 2018)\\ Tutorial 6 (Revision Problems)}
+
+\maketitle
+
+
+\section*{Problems on first-order systems}
+
+
+\begin{question}
+
+Output variable $y$ responds like a first-order dynamic system when exposed to a sudden change of input variable x. The half-life of the system is $2.00$ s. When $x$ is suddenly
+increased, $y$ grows from an initial value of $100$ to a final value of $132$.
+Calculate the time (in seconds) required for $y$ to reach a value of $124$.
+\examspace*{10em}
+
+\end{question}
+\begin{solution}
+
+
+\end{solution}
+
+\chapter*{Typical 2\textsuperscript{nd}-order systems}
+
+
+\section*{Second-order spring-mass-damper system}
+
+
+\begin{figure*}[h!]\label{fig:damper}
+\centering
+  \includegraphics[width=0.3\linewidth]{damper}
+  \caption{Second-order spring-mass-damper system.} 
+\end{figure*}
+
+\subsection*{Derivation of the 2\textsuperscript{nd}-order equation}
+
+By applying Newton's second law, on the free body diagram in \ref{fig:freebody}:
+
+\begin{figure*}[h!]\label{fig:freebody}
+\centering
+  \includegraphics[width=0.3\linewidth]{newton}
+  \caption{Free body diagram.} 
+\end{figure*}
+
+\begin{align}
+\sum F &= m a \\ 
+F_{\rm spring} + F_{\rm damper} + F_{\rm input}(t) &= m \frac{d^2y}{dt^2} \\ 
+-ky -c \frac{dy}{dt} + F_{\rm input}(t) &= m \frac{d^2y}{dt^2} \label{eqn:mass-spring}
+\end{align}
+
+Applying Laplace transform on Eqn ~\ref{eqn:mass-spring}:
+
+\begin{align*}
+-kY(s) - c\left[sY(s)-y(0)\right] + F(s) &= m\left[s^2Y(s)-y'(0)-sy(0)\right] \\
+F(s) + y(0) + my'(0)+msy(0) &= \left[ms^2+cs+k\right]Y(s) \\
+Y(s) &= \frac{F(s) + y(0) + my'(0)+msy(0)}{ms^2+cs+k} \\
+&= \frac{F(s)/m + y(0)/m + y'(0)+sy(0)}{s^2+\frac{c}{m}s+ \frac{k}{m}}
+\end{align*}
+
+By equating the denumerator to the characteristic polynomial of the 2\textsuperscript{nd}-order system $N(s)=(s^2 + 2 \eta \omega_n s + {\omega_n}^2)$, we realize that:
+\begin{itemize}
+\item $\omega_n=\sqrt{\frac{k}{m}}$
+\item $\eta = \frac{c}{\sqrt{km}}$
+\end{itemize} 
+
+
+
+\section*{Problems on 2\textsuperscript{nd}-order systems}
+
+
+\begin{question}
+
+A spring-mass-damper system is set up with the following
+properties: mass $m = 22.8$g, spring constant $k = 51.6$ N/cm, and damping coefficient $c = 3.49 $ N$\cdot$s/m. The forcing function is a step function (sudden jump).
+\begin{enumerate}
+\item Calculate the damping ratio of this system. Will it oscillate?
+\item If the system will oscillate, calculate the oscillation frequency in hertz. [Note: Calculate the physical frequency, not the radian frequency.] Compare the actual oscillating frequency to the undamped natural frequency of the system.
+\end{enumerate}
+\examspace*{10em}
+
+\end{question}
+\begin{solution}
+
+
+\end{solution}
+
+\begin{question}
+
+The following second-order ODE:
+\begin{equation*}
+5\frac{d^2y}{dt^2} + \frac{dy}{dt} + 1000y= x(t)
+\end{equation*}
+The forcing function is a step function (sudden jump):
+\begin{itemize}
+\item $x(t) = 0$ for $t<0$
+\item $x(t) = 25$ for $t>0$
+\end{itemize}
+
+
+\begin{enumerate}
+\item Calculate the natural frequency and damping ratio of this system.
+\item Calculate the equilibrium response (as $t \to \infty$ , what is $y$?)
+\end{enumerate}
+
+\examspace*{10em}
+
+\end{question}
+\begin{solution}
+
+
+\end{solution}
+
+
+
+\begin{question}
+
+\begin{figure*}[h!]\label{fig:freebody}
+\centering
+  \includegraphics[width=0.3\linewidth]{penduleum}
+  \caption{A pendulum-type system.} 
+\end{figure*}
+
+A pendulum-type amusement park ride
+behaves as a 2\textsuperscript{nd}-order dynamic system with damping ratio $\eta = 0.1$ and $f_n = 0.125$ Hz. For an initial displacement $S_i = 10.0$ m, calculate the damped natural frequency, the undamped natural frequency, and how long it takes for the oscillations to damp out to within 5\% of $S_i$ (the 95\% response time).
+
+\examspace*{10em}
+
+\end{question}
+\begin{solution}
+
+
+\end{solution}
+
+
+
+\end{document}
