@@ -1,0 +1,233 @@
+\documentclass[a4paper,11pt,dvipsnames]{book}
+\renewcommand{\familydefault}{\sfdefault}
+
+\input{../partials/includes}
+\input{../partials/setup}
+\input{../partials/styles}
+
+
+
+\graphicspath{{images/}} 
+
+
+
+
+\makeatletter
+\@addtoreset{question}{section}
+\makeatother
+
+
+\begin{document}
+\author{Dr. Muhammed Rushdi \and Asem Alaa}
+
+\title{Measurements and Instrumentation [SBE206A] (Fall 2018)\\ Tutorial 9}
+
+\maketitle
+
+
+\chapter*{Descriptive Statistics for Measurements Errors}
+
+
+\section*{Drawing Histogram}
+\begin{enumerate}
+\item Count $n$ as the number of data points.
+\item Determine the number of histogram bins using Sturges' rule: $k = \lceil \log_2 n \rceil+ 1$.
+\item Determine the range of data points: \\$R=max\left\lbrace x_i \right\rbrace - min\left\lbrace x_i \right\rbrace$
+\item Determine the width $w$ of each bin: $w = \frac{R}{k}$. You may slightly adjust the width to avoid ambiguity.
+\item Pinpoint the bins boundary on the graph. To span the whole range using $k$ bins interspaced by $w$.
+\item Calculate the normalized frequency of each histogram $p_i = \Sigma_i^k \frac{m_i}{n}$; where $m_i$ is the number of data points lying in the interval (i.e bin) $i$.
+\item Complete the histogram after determining the height of each bin to be proportional to its normalized frequency.
+\end{enumerate}
+
+\section*{Testing the Normality of your Data}
+
+Suppose that your data (consists of 100 points,$\mu = 499.5$, $\sigma = 8.389$) the first step (which is given) is to plot the histogram of your data. In this demo, the histogram summary is directly given to you as following: 
+
+\begin{tabular}{|c|c|}
+\hline 
+Interval & $m_i$ \\ 
+\hline 
+$\left[ 479.5, 484.5 \right]$ & 5 \\ 
+\hline 
+$\left[ 484.5, 489.5 \right]$ & 8 \\ 
+\hline 
+$\left[ 489.5, 494.5 \right]$ & 13 \\ 
+\hline 
+$\left[ 494.5, 499.5 \right]$ & 23 \\ 
+\hline 
+$\left[ 499.5, 504.5 \right]$ & 24 \\ 
+\hline 
+$\left[ 504.5,509.5 \right]$ & 14 \\ 
+\hline 
+$\left[ 509.5, 514.5 \right]$ & 9 \\ 
+\hline 
+$\left[  514.5, 519.5 \right]$ & 4 \\ 
+\hline 
+\end{tabular} \\
+
+
+The next steps is to map the histogram boundaries to the standardized normal distribution:
+\begin{itemize}
+\item If your data points $n>31$, use the standardized normal distribution.
+\item If your data points $n \leq 31$, use the student distribution.
+\end{itemize} 
+
+\hspace{-2cm}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+Boundary & 479.5 & 484.5 & 489.5 & 494.5 & 499.5 & 504.5 & 509.5  & 514.5 &  519.5 \\ 
+\hline 
+$Z(\frac{x-\mu}{\sigma})$ &  -2.38 & -1.792 & -1.195 & -0.6  & -0.004 & 0.592 &  1.188 & 1.784 & 2.381 \\
+\hline 
+$F(z)$ & 0.0087 & 0.037 & 0.116 &  0.274 & 0.498 & 0.723 &  0.883  & 0.963 & 0.991 \\
+\hline 
+Interval area & & & & & & & & & \\
+\hline
+expected count $m'_i = np$ & & & & & & & & & \\ 
+\hline
+\end{tabular} \\
+
+Finally, 
+\begin{enumerate}
+\item compute the $\chi^2$ as following:
+\begin{equation}
+\chi^2 = \Sigma \frac{(m'_i - m_i)^2}{m'_i}
+\end{equation}
+\item using $K=n-2=8$ as the degree of freedom, compare the obtained $\chi^2$ with the values at confidence level 90\% and 95\%.
+\end{enumerate}
+
+
+\section*{Uncertainty as an Estimated Variance}
+
+Defining the squared uncertainty $u_i^2$ as
+an estimate of the variance $\sigma_i^2$: 
+\begin{equation}
+u_c^2 \approx u_{x1}^2\left(\frac{\partial r}{\partial x_1}\right)^2 +  u_{x2}^2\left(\frac{\partial r}{\partial x_2}\right)^2 + 2u_{x1x2}\left(\frac{\partial r}{\partial x_1}\right)\left(\frac{\partial r}{\partial x_2}\right) + \cdots
+\end{equation}
+
+\section*{Single-Measurement Measurand Experiment}
+
+\textbf{Design-stage} uncertainty is expressed as a function of the zero-order uncertainty of the instrument, $u_0$ , 
+and the instrument uncertainty, $u_I$ , as:
+
+\begin{equation}
+u_d = \sqrt{u_I^2 + u_0^2}
+\end{equation}
+
+The \textbf{resolution} of an instrument is the \emph{smallest physically indicated division that the instrument displays or is marked}. The zero-order uncertainty of the instrument, $u_0$ , \textbf{is set arbitrarily to be equal to one-half the resolution}. \\
+
+The instrument uncertainty, $u_I$, usually is stated by the manufacturer and
+results from a number of possible elemental instrument uncertainties, $e_i$ .
+Examples of $e_i$ are hysteresis, linearity, sensitivity, zero-shift, repeatability,
+stability, and thermal-drift errors. Thus,
+\begin{equation}
+u_I=\sqrt{\Sigma_i^N (e_i)^2}
+\end{equation}
+
+
+\chapter*{Problems}
+
+
+\begin{question}
+Problem Statement: Some car rental agencies use an onboard global positioning
+system (GPS) to track an automobile. Assume that a typical GPS’s precision is 2\%
+and its accuracy is 5\%. Determine the combined standard uncertainty in position indication that the agency would have if \begin{enumerate}
+\item  it uses the GPS system as is, and 
+\item it recalibrates the GPS to within an accuracy of 1\%.
+\end{enumerate}
+
+\end{question}
+\begin{solution}
+\examspace*{10em}
+
+
+\end{solution}
+
+
+\begin{question}
+Since you cannot measure the kinetic energy (KE) of a motorcycle directly, you settle for measuring its mass (G) and velocity (H). You determined that the average values are $\bar{m} = 500$ kg and $\bar{v} = 20$ m/s. 
+Knowing that 
+\begin{equation}
+\text{KE} = \frac{1}{2} m v^2
+\end{equation}
+what is the most probable uncertainty in your computations of KE if the uncertainty in your
+mass measurement is 0.3 kg and the uncertainty in your velocity measurement is 0.008 m/s?
+(Remember to include the unit in your answer)
+\end{question}
+
+\begin{solution}
+\examspace*{10em}
+
+
+\end{solution}
+
+
+\begin{question}
+A pressure transducer is connected to a digital panel meter. The panel meter converts the pressure transducer’s output in volts back to pressure in psi. The manufacturer provides the following information about the panel meter: \\
+\begin{tabular}{|cc|}
+\hline 
+Resolution & 0.1 psi \\ 
+Repeatability & 0.1 psi \\ 
+Linearity & with 0.1\% of reading \\ 
+Drift & less than 0.1 psi /6 months within 32 $^{\circ}$F to 90 $^{\circ}$F range  \\ 
+\hline 
+\end{tabular} \\
+
+The only information given about the pressure transducer is that it has “an accuracy
+of within 0.5 \% of its reading”. Estimate the combined standard uncertainty in a measured pressure at a nominal
+value of 100 psi at 70 $^{\circ}$ F. Assume that the transducer’s response is linear with an output of 1 V for every psi of input.
+\end{question}
+
+\begin{solution}
+
+\examspace*{10em}
+
+\end{solution}
+
+
+
+\begin{question}
+Determine the combined standard uncertainty in the density of air,
+assuming $\rho = P/RT$. Assume negligible uncertainty in R (R air = 287.04 J/kg·K). Let
+T = 24 $^{\circ}$C = 297 $^{\circ}$K and P = 760 mmHg.
+
+\end{question}
+\begin{solution}
+
+\examspace*{10em}
+
+\end{solution}
+
+\begin{question}
+
+
+A group of biomedical engineering students wish to
+determine the density of an elliptical cone to be used in the
+design of a prosthetic device. They plan to determine the
+density from measurements of the cone's mass, length h,
+and diameter d, which have instrument resolutions of 0.1
+lbm, 0.05 in., and 0.0005 in., respectively. The balance used
+to measure the weight has an instrument uncertainty
+(accuracy) of 1\%. Each of the different rulers used to
+measure the length, and diameter presents an instrument uncertainty (accuracy) of 0.5\%. Nominal
+values of the mass, length, and diameter are 4.5 lbm, 6.00 in., and 4.0000 in., respectively.
+
+\begin{enumerate}
+\item What are the resolution uncertainties for the measurements of the mass, length, and diameter?
+\item Compute the sensitivity coefficients of the density with respect to the mass, length, and diameter at
+the nominal values.
+\item Estimate the zero-order uncertainty in the determination of the density.
+\item Which measurement contributes the most to the zero-order uncertainty?
+\item What are the absolute instrument uncertainties for the measurements of the mass, length, and
+diameter at the nominal values?
+\item Estimate the instrument uncertainty in the determination of the density.
+\item Estimate the design-stage uncertainty in the determination of the density.
+\end{enumerate}
+\end{question}
+\begin{solution}
+\examspace*{10em}
+
+\end{solution}
+
+
+\end{document}
