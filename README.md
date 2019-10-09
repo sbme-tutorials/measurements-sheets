@@ -1,4 +1,4 @@
-# Measurements and Instrumentation \(SBE202\) - Tutorials
+# Measurements and Instrumentation \(SBE206A\) - Tutorials
 
 ## Contents
 
